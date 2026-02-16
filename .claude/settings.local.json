@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install)",
+      "Bash(node:*)",
+      "Bash(copy:*)",
+      "Bash(cmd /c copy:*)",
+      "WebFetch(domain:youtube.com)",
+      "Bash(\"C:/Users/Adrien/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-8.0.1-full_build/bin/ffmpeg.exe\" -i \"C:/Users/Adrien/OneDrive/Bureau/Site 1/Vidéos/couché de soleil.mp4\" -vf \"scale=-2:720\" -c:v libx264 -crf 28 -preset slow -an -movflags +faststart \"C:/Users/Adrien/OneDrive/Bureau/Site 1/public/assets/videos/couche-soleil-web.mp4\" -y)",
+      "Bash(\"C:/Users/Adrien/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-8.0.1-full_build/bin/ffprobe.exe\" -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 \"C:/Users/Adrien/OneDrive/Bureau/Site 1/public/assets/videos/couche-soleil-web.mp4\")"
+    ]
+  }
+}

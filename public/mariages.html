@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ALH Productions - Films de mariage élégants et émouvants. Capturer l'essence de votre plus beau jour.">
+    <title>Mariages | ALH Productions</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="/assets/images/favicon.jpg">
+</head>
+<body>
+    <!-- ==================== HEADER ==================== -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <a href="/" class="logo">
+                <img src="/assets/images/logo.png" alt="ALH Productions Logo">
+            </a>
+
+            <nav class="nav" id="nav">
+                <ul class="nav-list">
+                    <li><a href="/" class="nav-link">Accueil</a></li>
+                    <li><a href="/mariages" class="nav-link active">Mariages</a></li>
+                    <li><a href="/entreprises" class="nav-link">Entreprises</a></li>
+                    <li><a href="/sport" class="nav-link">Sport</a></li>
+                </ul>
+            </nav>
+
+            <button class="btn-reservation" id="btn-reservation">
+                <span class="calendar-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                </span>
+                Réserver
+            </button>
+
+            <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ==================== MODAL RÉSERVATION ==================== -->
+    <div class="modal" id="modal-reservation">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <h2>Réserver une date</h2>
+            <p>Sélectionnez une date et laissez-moi vos coordonnées pour discuter de votre projet.</p>
+
+            <form class="reservation-form" id="reservation-form" action="https://formsubmit.co/montage.adrienlhdx@gmail.com" method="POST">
+                <!-- Champs cachés FormSubmit -->
+                <input type="hidden" name="_next" value="http://localhost:3000/mariages?success=true">
+                <input type="hidden" name="_subject" value="Nouvelle demande de réservation Mariage - ALH Productions">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+
+                <div class="form-group">
+                    <label for="reservation-date">Date de l'évènement</label>
+                    <input type="date" id="reservation-date" name="Date de l'évènement" required>
+                </div>
+                <div class="form-group">
+                    <label for="reservation-type">Type de prestation</label>
+                    <select id="reservation-type" name="Type de prestation" required>
+                        <option value="">Sélectionnez...</option>
+                        <option value="Mariage" selected>Mariage</option>
+                        <option value="Entreprise">Entreprise</option>
+                        <option value="Sport">Sport</option>
+                        <option value="Autre">Autre</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="reservation-email">Votre email</label>
+                    <input type="email" id="reservation-email" name="Email" placeholder="votre@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="reservation-phone">Votre téléphone</label>
+                    <input type="tel" id="reservation-phone" name="Téléphone" placeholder="06 12 34 56 78" required>
+                </div>
+                <div class="form-group">
+                    <label for="reservation-message">Message (optionnel)</label>
+                    <textarea id="reservation-message" name="Message" rows="3" placeholder="Décrivez brièvement votre projet..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Envoyer ma demande</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==================== PAGE HEADER ==================== -->
+    <section class="page-header">
+        <div class="page-header-bg"></div>
+        <div class="page-header-overlay"></div>
+        <div class="page-header-content fade-in">
+            <span class="section-label">Films de Mariage</span>
+            <h1>Mariages</h1>
+            <p>Immortalisez le plus beau jour de votre vie avec des images qui racontent votre histoire d'amour.</p>
+        </div>
+    </section>
+
+    <!-- ==================== GALERIE VIDÉOS ==================== -->
+    <section class="section video-gallery">
+        <div class="container">
+            <div class="section-header text-center reveal-up">
+                <span class="section-label">Portfolio</span>
+                <h2 class="section-title">Mes dernières réalisations</h2>
+                <p class="section-description">
+                    Chaque mariage est unique. Découvrez comment je capture ces moments précieux.
+                </p>
+            </div>
+
+            <div class="video-grid">
+                <!-- Vidéo principale (featured) -->
+                <div class="video-card video-featured reveal-up">
+                    <div class="video-embed">
+                        <iframe src="https://www.youtube.com/embed/Qk_KJx7juac" title="Manon & Gwendal - Domaine Le Rémoulin, Nostang" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Manon & Gwendal - Domaine Le Rémoulin, Nostang</h3>
+                        <p>Un mariage champêtre et élégant au coeur du Morbihan. Film complet des préparatifs jusqu'au bal dansant.</p>
+                    </div>
+                </div>
+
+                <!-- Vidéo 2 -->
+                <div class="video-card reveal-up">
+                    <div class="video-embed">
+                        <iframe src="https://www.youtube.com/embed/qkVZDlSY9gc" title="Film de mariage" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Marie-Christine & Hervé</h3>
+                        <p>Mariage champêtre au cœur des lavandes provençales.</p>
+                    </div>
+                </div>
+
+                <!-- Vidéo 3 - Prochainement -->
+                <div class="video-card reveal-up">
+                    <div class="video-embed">
+                        <div class="video-placeholder coming-soon-placeholder">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.6">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <span>Prochainement</span>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Prochainement...</h3>
+                        <p>Un nouveau film arrive bientôt.</p>
+                    </div>
+                </div>
+
+                <!-- Vidéo 4 - Prochainement -->
+                <div class="video-card reveal-up">
+                    <div class="video-embed">
+                        <div class="video-placeholder coming-soon-placeholder">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.6">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <span>Prochainement</span>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Prochainement...</h3>
+                        <p>Un nouveau film arrive bientôt.</p>
+                    </div>
+                </div>
+
+                <!-- Vidéo 5 - Prochainement -->
+                <div class="video-card reveal-up">
+                    <div class="video-embed">
+                        <div class="video-placeholder coming-soon-placeholder">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.6">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <span>Prochainement</span>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Prochainement...</h3>
+                        <p>Un nouveau film arrive bientôt.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SVG décoratifs -->
+        <svg class="deco-svg" style="top:5%;left:12%;transform:rotate(-15deg)" width="220" height="150" viewBox="0 0 150 100" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <circle cx="50" cy="50" r="28"/>
+            <circle cx="100" cy="50" r="28"/>
+        </svg>
+        <svg class="deco-svg" style="top:40%;left:55%;transform:rotate(10deg)" width="170" height="160" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+            <path d="M50 88C50 88 10 58 10 33C10 18 22 8 35 8C43 8 49 14 50 20C51 14 57 8 65 8C78 8 90 18 90 33C90 58 50 88 50 88Z"/>
+        </svg>
+        <svg class="deco-svg" style="top:72%;left:38%;transform:rotate(-8deg)" width="130" height="200" viewBox="0 0 60 130" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+            <!-- Coupe -->
+            <path d="M15 5 L20 45 C20 48 25 50 30 50 C35 50 40 48 40 45 L45 5"/>
+            <!-- Pied évasé -->
+            <path d="M30 50 C30 50 30 80 30 90 C28 95 22 102 18 105"/>
+            <path d="M30 90 C32 95 38 102 42 105"/>
+            <!-- Bulles fines -->
+            <circle cx="28" cy="20" r="1.2"/>
+            <circle cx="33" cy="30" r="1"/>
+            <circle cx="27" cy="38" r="0.8"/>
+        </svg>
+        <svg class="deco-svg" style="top:88%;left:65%;transform:rotate(-5deg)" width="160" height="160" viewBox="0 0 110 110" fill="currentColor" aria-hidden="true">
+            <path d="M35 8L39 22L53 22L41 30L45 44L35 35L25 44L29 30L17 22L31 22Z"/>
+            <path d="M80 30L83 40L93 40L85 46L88 56L80 50L72 56L75 46L67 40L77 40Z"/>
+            <path d="M55 62L58 72L68 72L60 78L63 88L55 82L47 88L50 78L42 72L52 72Z"/>
+            <circle cx="22" cy="58" r="2.5"/>
+            <circle cx="95" cy="18" r="2"/>
+        </svg>
+    </section>
+
+    <!-- ==================== DESCRIPTION DE LA PRESTATION ==================== -->
+    <section class="section description-section">
+        <div class="container">
+            <div class="description-grid">
+                <div class="description-content reveal-left">
+                    <span class="section-label">Ma vision</span>
+                    <h2>Un film qui vous ressemble</h2>
+                    <p>
+                        Votre mariage est bien plus qu'une simple journée : c'est le début d'une nouvelle aventure.
+                        Mon approche consiste à capturer l'essence de votre histoire, les émotions authentiques,
+                        les regards complices et les moments spontanés qui font de ce jour un souvenir inoubliable.
+                    </p>
+                    <p>
+                        Je travaille de manière discrète pour vous permettre de vivre pleinement votre journée
+                        tout en immortalisant chaque instant précieux.
+                    </p>
+
+                    <ul class="description-list">
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Rencontre préalable pour comprendre votre vision
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Couverture complète de la journée (préparatifs à la soirée)
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Équipement cinématographique professionnel
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Montage soigné avec étalonnage cinéma
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Livraison en haute définition (4K disponible)
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="description-image reveal-right">
+                    <img src="/assets/images/adrien-mariage.jpg" alt="Adrien en tournage de mariage" class="about-photo" style="border-radius: 8px;">
+                </div>
+            </div>
+        </div>
+
+        <!-- SVG décoratifs -->
+        <svg class="deco-svg" style="top:10%;left:70%;transform:rotate(5deg)" width="180" height="210" viewBox="0 0 100 120" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="35" y="18" width="30" height="22" rx="4"/>
+            <rect x="22" y="40" width="56" height="22" rx="4"/>
+            <rect x="10" y="62" width="80" height="28" rx="4"/>
+            <line x1="50" y1="18" x2="50" y2="6"/>
+            <circle cx="50" cy="4" r="3" fill="currentColor"/>
+            <path d="M35 29C42 25 50 32 57 28C62 25 65 28 65 28" stroke-width="1"/>
+        </svg>
+        <svg class="deco-svg" style="top:55%;left:25%;transform:rotate(-12deg)" width="210" height="160" viewBox="0 0 120 100" fill="currentColor" stroke="none" aria-hidden="true">
+            <!-- Corps fluide -->
+            <path d="M20 48 C16 42 14 34 18 28 C22 22 30 24 34 30 C38 36 40 44 44 50 C48 56 56 62 68 66 C74 68 80 66 84 62 C78 68 68 72 58 70 C48 68 38 60 32 54 C26 50 22 50 20 48 Z"/>
+            <!-- Tête -->
+            <ellipse cx="18" cy="30" rx="6" ry="5.5"/>
+            <!-- Bec -->
+            <path d="M12 30 C10 29 7 30 7 30 C10 32 12 31 12 31 Z"/>
+            <!-- Aile principale -->
+            <path d="M34 34 C36 20 48 6 68 2 C78 0 88 4 92 10 C86 8 76 10 66 18 C56 26 48 36 44 44 Z"/>
+            <!-- Plumes de l'aile -->
+            <path d="M38 28 C44 14 58 4 76 2 C66 10 56 22 48 36 Z" opacity="0.6"/>
+            <path d="M42 24 C50 10 66 2 84 4 C72 8 60 18 52 32 Z" opacity="0.4"/>
+            <!-- Queue élégante -->
+            <path d="M68 66 C76 62 86 60 96 64 C88 64 80 66 72 70 Z"/>
+            <path d="M70 68 C78 66 90 66 98 72 C88 70 78 70 72 72 Z" opacity="0.6"/>
+        </svg>
+    </section>
+
+    <!-- ==================== PACKAGES ==================== -->
+    <section class="section packages-section">
+        <div class="container">
+            <div class="section-header text-center reveal-up">
+                <span class="section-label">Formules</span>
+                <h2 class="section-title">Packages Mariage</h2>
+                <p class="section-description">
+                    Des formules adaptées à vos besoins et à votre budget.
+                </p>
+            </div>
+
+            <div class="packages-grid">
+                <!-- Package Essentiel -->
+                <div class="package-card reveal-up">
+                    <div class="package-name">Zoom</div>
+                    <div class="package-price">1190€</div>
+                    <div class="package-subtitle">Des préparatifs à l'entrée des mariés dans la salle de réception</div>
+                    <ul class="package-features">
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Film de 8 à 12min
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Livraison en 4k
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Dual Cameras
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Remise du film sur clé USB
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Frais de route gratuit en Bretagne
+                        </li>
+                    </ul>
+                    <button class="btn btn-outline btn-full" onclick="document.getElementById('btn-reservation').click()">
+                        Demander un devis
+                    </button>
+                </div>
+
+                <!-- Package Premium -->
+                <div class="package-card featured reveal-up">
+                    <div class="package-name">Productions</div>
+                    <div class="package-price">1490€</div>
+                    <div class="package-subtitle">Des préparatifs jusqu'au bal dansant</div>
+                    <ul class="package-features">
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Film de 10 à 15min
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Livraison en 4k
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Dual Cameras
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Remise du film sur clé USB
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Frais de route gratuit en Bretagne
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Teaser court pour vos réseaux
+                        </li>
+                    </ul>
+                    <button class="btn btn-primary btn-full" onclick="document.getElementById('btn-reservation').click()">
+                        Demander un devis
+                    </button>
+                </div>
+
+                <!-- Package Prestige -->
+                <div class="package-card reveal-up">
+                    <div class="package-name">Prestige</div>
+                    <div class="package-price">Sur devis</div>
+                    <div class="package-subtitle">Demande en mariage + mariage, plusieurs jours, week-end à l'étranger...</div>
+                    <ul class="package-features">
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Longueur du Film sur demande
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Livraison en 4k
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Dual Cameras
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Possibilité Second Cadreur
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Trailer sur demande
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Shooting vidéo lieu exceptionnel
+                        </li>
+                    </ul>
+                    <button class="btn btn-outline btn-full" onclick="document.getElementById('btn-reservation').click()">
+                        Demander un devis
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SVG décoratifs -->
+        <svg class="deco-svg" style="top:8%;left:42%;transform:rotate(8deg)" width="160" height="230" viewBox="0 0 90 130" fill="currentColor" stroke="none" aria-hidden="true">
+            <!-- Pétales extérieurs -->
+            <path d="M45 18 C38 14 26 16 24 26 C22 36 32 44 45 42 Z" opacity="0.5"/>
+            <path d="M45 18 C52 14 64 16 66 26 C68 36 58 44 45 42 Z" opacity="0.5"/>
+            <!-- Pétales intérieurs -->
+            <path d="M45 22 C40 20 30 22 30 30 C30 38 38 42 45 40 Z" opacity="0.7"/>
+            <path d="M45 22 C50 20 60 22 60 30 C60 38 52 42 45 40 Z" opacity="0.7"/>
+            <!-- Coeur -->
+            <ellipse cx="45" cy="32" rx="6" ry="8"/>
+            <!-- Tige -->
+            <path d="M45 42 C45 42 44 70 44 80 C44 90 45 100 45 115" stroke="currentColor" fill="none" stroke-width="2"/>
+            <!-- Feuille gauche -->
+            <path d="M44 75 C38 68 28 68 26 72 C24 76 32 80 44 75 Z" opacity="0.6"/>
+            <!-- Feuille droite -->
+            <path d="M45 90 C52 84 62 84 64 88 C66 92 56 94 45 90 Z" opacity="0.6"/>
+        </svg>
+        <svg class="deco-svg" style="top:45%;left:75%;transform:rotate(-18deg)" width="150" height="170" viewBox="0 0 90 100" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <polygon points="45,5 85,35 45,95 5,35"/>
+            <line x1="5" y1="35" x2="85" y2="35"/>
+            <line x1="45" y1="5" x2="28" y2="35"/>
+            <line x1="45" y1="5" x2="62" y2="35"/>
+            <line x1="28" y1="35" x2="45" y2="95"/>
+            <line x1="62" y1="35" x2="45" y2="95"/>
+        </svg>
+        <svg class="deco-svg" style="top:72%;left:15%;transform:rotate(12deg)" width="200" height="135" viewBox="0 0 120 80" fill="currentColor" aria-hidden="true">
+            <path d="M60 40C45 25 20 8 12 20C4 32 28 42 60 40Z"/>
+            <path d="M60 40C75 25 100 8 108 20C116 32 92 42 60 40Z"/>
+            <path d="M60 40C45 55 28 72 20 62C12 52 38 45 60 40Z" opacity="0.7"/>
+            <path d="M60 40C75 55 92 72 100 62C108 52 82 45 60 40Z" opacity="0.7"/>
+            <circle cx="60" cy="40" r="5"/>
+        </svg>
+        <svg class="deco-svg" style="top:85%;left:50%;transform:rotate(10deg)" width="190" height="120" viewBox="0 0 130 80" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M5 70C25 55 50 40 80 25C95 18 110 12 125 10" fill="none"/>
+            <path d="M20 62C15 52 20 42 30 40C30 40 25 55 20 62Z"/>
+            <path d="M38 52C33 42 38 32 48 30C48 30 43 45 38 52Z"/>
+            <path d="M55 42C50 32 55 22 65 20C65 20 60 35 55 42Z"/>
+            <path d="M75 32C70 22 75 12 85 10C85 10 80 25 75 32Z"/>
+            <path d="M30 65C35 55 44 52 50 58C50 58 40 58 30 65Z"/>
+            <path d="M48 55C53 45 62 42 68 48C68 48 58 48 48 55Z"/>
+            <path d="M66 44C71 34 80 31 86 37C86 37 76 37 66 44Z"/>
+        </svg>
+    </section>
+
+    <!-- ==================== CTA ==================== -->
+    <section class="section cta-section">
+        <div class="cta-background">
+            <img src="/assets/images/workflow.svg" alt="">
+            <div class="cta-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="cta-content text-center reveal-up">
+                <h2>Prêt à donner vie à votre projet ?</h2>
+                <p>Contactez-moi pour discuter de votre vision et créer ensemble quelque chose d'unique.</p>
+                <div class="glow-wrapper" id="glow-wrapper">
+                    <canvas class="glow-canvas" id="glow-canvas"></canvas>
+                    <span class="glow-dot" id="glow-dot"></span>
+                    <button class="btn btn-lg cta-btn-white" id="cta-reservation">
+                        Réserver une date
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="/assets/images/logo.png" alt="ALH Productions" class="footer-logo">
+                    <p>Vidéaste professionnel passionné par l'art de raconter des histoires à travers l'image.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/adrien.productions/" target="_blank" class="social-link" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="https://www.youtube.com/@adrienlhdx" target="_blank" class="social-link" aria-label="YouTube">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61566746434525" target="_blank" class="social-link" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="/">Accueil</a></li>
+                        <li><a href="/mariages">Mariages</a></li>
+                        <li><a href="/entreprises">Entreprises</a></li>
+                        <li><a href="/sport">Sport</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <a href="https://mail.google.com/mail/?view=cm&to=montage.adrienlhdx@gmail.com" target="_blank">montage.adrienlhdx@gmail.com</a>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Bretagne, France
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 ALH Productions. Tous droits réservés.</p>
+                <p>Créé avec passion par Adrien</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="/js/script.js"></script>
+</body>
+</html>

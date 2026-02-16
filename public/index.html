@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ALH Productions - Vidéaste professionnel spécialisé dans les mariages, événements corporate et sports. Capturer vos moments avec passion.">
+    <meta name="keywords" content="vidéaste, mariage, corporate, sport, production vidéo, Adrien, ALH Productions">
+    <title>ALH Productions | Vidéaste Professionnel</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="/assets/images/favicon.jpg">
+</head>
+<body>
+    <!-- ==================== HEADER ==================== -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <!-- Logo -->
+            <a href="/" class="logo">
+                <img src="/assets/images/logo.png" alt="ALH Productions Logo">
+            </a>
+
+            <!-- Navigation -->
+            <nav class="nav" id="nav">
+                <ul class="nav-list">
+                    <li><a href="/" class="nav-link active">Accueil</a></li>
+                    <li><a href="/mariages" class="nav-link">Mariages</a></li>
+                    <li><a href="/entreprises" class="nav-link">Entreprises</a></li>
+                    <li><a href="/sport" class="nav-link">Sport</a></li>
+                </ul>
+            </nav>
+
+            <!-- Calendrier de réservation -->
+            <button class="btn-reservation" id="btn-reservation">
+                <span class="calendar-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                </span>
+                Réserver
+            </button>
+
+            <!-- Menu mobile -->
+            <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ==================== MODAL RÉSERVATION ==================== -->
+    <div class="modal" id="modal-reservation">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <h2>Réserver une date</h2>
+            <p>Sélectionnez une date et laissez-moi vos coordonnées pour discuter de votre projet.</p>
+
+            <form class="reservation-form" id="reservation-form" action="https://formsubmit.co/montage.adrienlhdx@gmail.com" method="POST">
+                <!-- Champs cachés FormSubmit -->
+                <input type="hidden" name="_next" value="http://localhost:3000/?success=true">
+                <input type="hidden" name="_subject" value="Nouvelle demande de réservation - ALH Productions">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+
+                <div class="form-group">
+                    <label for="reservation-date">Date de l'évènement</label>
+                    <input type="date" id="reservation-date" name="Date de l'évènement" required>
+                </div>
+                <div class="form-group">
+                    <label for="reservation-type">Type de prestation</label>
+                    <select id="reservation-type" name="Type de prestation" required>
+                        <option value="">Sélectionnez...</option>
+                        <option value="Mariage">Mariage</option>
+                        <option value="Entreprise">Entreprise</option>
+                        <option value="Sport">Sport</option>
+                        <option value="Autre">Autre</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="reservation-email">Votre email</label>
+                    <input type="email" id="reservation-email" name="Email" placeholder="votre@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="reservation-phone">Votre téléphone</label>
+                    <input type="tel" id="reservation-phone" name="Téléphone" placeholder="06 12 34 56 78" required>
+                </div>
+                <div class="form-group">
+                    <label for="reservation-message">Message (optionnel)</label>
+                    <textarea id="reservation-message" name="Message" rows="3" placeholder="Décrivez brièvement votre projet..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Envoyer ma demande</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero">
+        <div class="hero-video-container">
+            <!-- Image de fond -->
+            <div class="hero-image" style="background-image: url('/assets/images/hero-bg.jpg');"></div>
+            <div class="hero-overlay"></div>
+        </div>
+
+        <div class="hero-content">
+            <span class="hero-subtitle fade-in">Vidéaste Professionnel</span>
+            <h1 class="hero-title fade-in">
+                Capturer l'essence<br>
+                <span class="text-gold">de vos moments</span>
+            </h1>
+            <p class="hero-description fade-in">
+                Je suis Adrien, fondateur d'ALH Productions. Passionné par l'image et l'émotion,
+                je donne vie à vos histoires à travers des films uniques et authentiques.
+            </p>
+            <div class="hero-cta fade-in">
+                <a href="#prestations" class="btn btn-primary">Découvrir mes services</a>
+                <a href="#about" class="btn btn-outline">En savoir plus</a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- ==================== SECTION À PROPOS ==================== -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image reveal-left">
+                    <img src="/assets/images/presentation.jpg" alt="Adrien - ALH Productions" class="about-photo">
+                    <div class="about-image-accent"></div>
+                </div>
+
+                <div class="about-content reveal-right">
+                    <span class="section-label">À propos</span>
+                    <h2 class="section-title">Adrien & ALH Productions</h2>
+                    <p class="about-text">
+                        Depuis plusieurs années, je parcours la France pour capturer les moments
+                        les plus précieux de la vie. Qu'il s'agisse du jour de votre mariage,
+                        d'un événement corporate ou d'une performance sportive exceptionnelle,
+                        mon objectif est de créer des films qui racontent <strong>votre histoire</strong>.
+                    </p>
+                    <p class="about-text">
+                        Ma philosophie ? Allier technicité cinématographique et sensibilité artistique
+                        pour produire des vidéos qui vous ressemblent et vous émeuvent à chaque visionnage.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-number" data-count="150">0</span>
+                            <span class="stat-label">Projets réalisés</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-count="5">0</span>
+                            <span class="stat-label">Années d'expérience</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-count="100">0</span>
+                            <span class="stat-label">Clients satisfaits</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SECTION PRESTATIONS ==================== -->
+    <section class="section prestations" id="prestations">
+        <div class="container">
+            <div class="section-header text-center reveal-up">
+                <span class="section-label">Services</span>
+                <h2 class="section-title">Mes Prestations</h2>
+                <p class="section-description">
+                    Des films sur mesure pour chaque occasion. Découvrez mes différentes expertises.
+                </p>
+            </div>
+
+            <div class="prestations-grid">
+                <!-- Carte Mariages -->
+                <a href="/mariages" class="prestation-card reveal-up">
+                    <div class="prestation-image">
+                        <img src="/assets/images/mariage-prestation.jpg" alt="Vidéo Mariage">
+                        <div class="prestation-overlay"></div>
+                    </div>
+                    <div class="prestation-content">
+                        <h3>Mariages</h3>
+                        <p>Immortalisez le plus beau jour de votre vie avec un film émouvant et élégant.</p>
+                        <span class="prestation-link">
+                            Découvrir
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Carte Entreprises -->
+                <a href="/entreprises" class="prestation-card reveal-up" style="animation-delay: 0.1s;">
+                    <div class="prestation-image">
+                        <img src="/assets/images/entreprise-prestation.jpg" alt="Vidéo Corporate">
+                        <div class="prestation-overlay"></div>
+                    </div>
+                    <div class="prestation-content">
+                        <h3>Entreprises</h3>
+                        <p>Communication institutionnelle, événements, reportages : valorisez votre image.</p>
+                        <span class="prestation-link">
+                            Découvrir
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Carte Sport -->
+                <a href="/sport" class="prestation-card reveal-up" style="animation-delay: 0.2s;">
+                    <div class="prestation-image">
+                        <img src="/assets/images/sport-prestation.jpg" alt="Vidéo Sport">
+                        <div class="prestation-overlay"></div>
+                    </div>
+                    <div class="prestation-content">
+                        <h3>Sport</h3>
+                        <p>Capturez l'intensité et l'adrénaline de vos performances sportives.</p>
+                        <span class="prestation-link">
+                            Découvrir
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SECTION TÉMOIGNAGES ==================== -->
+    <section class="section testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header text-center reveal-up">
+                <span class="section-label">Témoignages</span>
+                <h2 class="section-title">Ce que disent mes clients</h2>
+                <div class="testimonials-rating-summary">
+                    <div class="rating-stars" aria-label="5 étoiles sur 5">
+                        <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                    </div>
+                    <span class="rating-label">5/5 basé sur les avis clients</span>
+                </div>
+            </div>
+
+            <div class="testimonials-nav-wrapper reveal-up">
+                <button class="testimonials-arrow testimonials-arrow--prev" id="testimonials-prev" aria-label="Page précédente">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+
+                <div class="testimonials-grid" id="testimonials-grid">
+                    <!-- Témoignage 1 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-accent"></div>
+                        <div class="testimonial-body">
+                            <div class="testimonial-stars" aria-label="5 étoiles">
+                                <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                            </div>
+                            <div class="testimonial-content">
+                                <p class="testimonial-text is-long">
+                                    Adrien a su rendre notre jour encore plus spécial grâce à son film qui a su résumer l'ambiance et l'émotion qui se faisait ressentir, merci infiniment nous ne pouvions pas rêver mieux, chaque moment important dans la journée à été retranscrit dans ce sublime film. Nous nous demandions si cela était nécessaire et aujourd'hui nous ne regrettons pas un seul instant d'avoir fait appel à toi car désormais nous pourrons nous remémorer cette journée indéfiniment. Merci pour ton implication, ta gentillesse, discrétion, et professionnalisme, nous étions tellement à l'aise avec toi que nous n'avons même plus fait attention à la caméra. Nous te souhaitons une belle saison des mariages, à bientôt très cher Adrien !
+                                </p>
+                                <button class="testimonial-toggle" aria-expanded="false">Lire la suite</button>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar"><span>M&G</span></div>
+                                <div class="author-info">
+                                    <strong>Manon & Gwendal</strong>
+                                    <span>Mariage - Mars 2025</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Témoignage 2 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-accent"></div>
+                        <div class="testimonial-body">
+                            <div class="testimonial-stars" aria-label="5 étoiles">
+                                <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                            </div>
+                            <div class="testimonial-content">
+                                <p class="testimonial-text is-long">
+                                    Lors de vos événements n'hésitez pas à faire appel à Adrien. Il arrive à capter tous les moments essentiels qu'il retranscrit avec toutes les émotions du plus beau jour de notre vie. Une vidéo inoubliable à notre image. Nous recommandons vivement, mille mercis ! Pour cette journée malgré le stress il a su se faire discret, a beaucoup d'humour, nous nous sentons plus à l'aise et le stress s'estompe au fur et à mesure. Il est très professionnel. Une belle surprise : le son a été intégré dans la vidéo, Adrien a interrogé quelques invités sans que nous sachions et le rendu est juste fantastique, une dimension plus vivante et émotive. Faites confiance à Adrien, il fera de votre jour un jour merveilleux !
+                                </p>
+                                <button class="testimonial-toggle" aria-expanded="false">Lire la suite</button>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar"><span>M&H</span></div>
+                                <div class="author-info">
+                                    <strong>Marie-Christine & Hervé</strong>
+                                    <span>Mariage - Juin 2025</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Témoignage 3 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-accent"></div>
+                        <div class="testimonial-body">
+                            <div class="testimonial-stars" aria-label="5 étoiles">
+                                <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                            </div>
+                            <div class="testimonial-content">
+                                <p class="testimonial-text">
+                                    La vidéo de notre compétition est incroyable ! Adrien a capturé
+                                    l'intensité et l'énergie de chaque moment. Un travail remarquable
+                                    qui nous permet de revivre ces instants de passion.
+                                </p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar"><span>TB</span></div>
+                                <div class="author-info">
+                                    <strong>Thomas Bernard</strong>
+                                    <span>Athlète professionnel</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Témoignage 4 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-accent"></div>
+                        <div class="testimonial-body">
+                            <div class="testimonial-stars" aria-label="5 étoiles">
+                                <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                            </div>
+                            <div class="testimonial-content">
+                                <p class="testimonial-text">
+                                    Nous avons fait appel à Adrien pour notre anniversaire de mariage.
+                                    Sa créativité et son professionnalisme ont dépassé toutes nos attentes.
+                                    Un artiste passionné !
+                                </p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar"><span>S&P</span></div>
+                                <div class="author-info">
+                                    <strong>Sophie & Pierre</strong>
+                                    <span>Anniversaire - 2024</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Témoignage 5 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-accent"></div>
+                        <div class="testimonial-body">
+                            <div class="testimonial-stars" aria-label="5 étoiles">
+                                <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                            </div>
+                            <div class="testimonial-content">
+                                <p class="testimonial-text is-long">
+                                    Un immense merci à Adrien pour la vidéo de notre mariage ! Il a su capter chaque regard, chaque sourire et chaque larme de joie. Le résultat est tout simplement magnifique, on revit notre journée à chaque visionnage. Sa discrétion pendant la cérémonie était remarquable, on oubliait totalement sa présence. Le montage est d'une qualité cinématographique, avec des transitions parfaites et une bande-son qui colle parfaitement à l'ambiance.
+                                </p>
+                                <button class="testimonial-toggle" aria-expanded="false">Lire la suite</button>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar"><span>J&M</span></div>
+                                <div class="author-info">
+                                    <strong>Julie & Maxime</strong>
+                                    <span>Mariage - Été 2024</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Témoignage 6 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-accent"></div>
+                        <div class="testimonial-body">
+                            <div class="testimonial-stars" aria-label="5 étoiles">
+                                <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                            </div>
+                            <div class="testimonial-content">
+                                <p class="testimonial-text">
+                                    Adrien a réalisé notre film d'entreprise avec un professionnalisme
+                                    exemplaire. Il a compris notre vision dès le premier rendez-vous
+                                    et le résultat dépasse largement nos attentes. Nos équipes sont ravies.
+                                </p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar"><span>GL</span></div>
+                                <div class="author-info">
+                                    <strong>Groupe Lévêque</strong>
+                                    <span>Entreprise - 2025</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Témoignage 7 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-accent"></div>
+                        <div class="testimonial-body">
+                            <div class="testimonial-stars" aria-label="5 étoiles">
+                                <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                            </div>
+                            <div class="testimonial-content">
+                                <p class="testimonial-text">
+                                    Des images à couper le souffle ! Adrien a filmé notre championnat
+                                    régional et a su retranscrire l'intensité de chaque épreuve.
+                                    Les ralentis sont incroyables et la musique parfaitement choisie.
+                                </p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar"><span>AL</span></div>
+                                <div class="author-info">
+                                    <strong>Antoine Leroy</strong>
+                                    <span>Sport - Compétition 2024</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Témoignage 8 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-accent"></div>
+                        <div class="testimonial-body">
+                            <div class="testimonial-stars" aria-label="5 étoiles">
+                                <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                            </div>
+                            <div class="testimonial-content">
+                                <p class="testimonial-text is-long">
+                                    Nous avons longuement hésité avant de prendre un vidéaste pour notre mariage et aujourd'hui c'est notre plus belle décision. Adrien est discret, attentionné et son montage est digne d'un film de cinéma. Chaque détail a été pensé, de la lumière aux transitions en passant par le choix musical. Merci du fond du coeur pour ce souvenir inestimable !
+                                </p>
+                                <button class="testimonial-toggle" aria-expanded="false">Lire la suite</button>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar"><span>C&J</span></div>
+                                <div class="author-info">
+                                    <strong>Caroline & Julien</strong>
+                                    <span>Mariage - Septembre 2024</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Témoignage 9 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-accent"></div>
+                        <div class="testimonial-body">
+                            <div class="testimonial-stars" aria-label="5 étoiles">
+                                <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                            </div>
+                            <div class="testimonial-content">
+                                <p class="testimonial-text">
+                                    Adrien a su mettre en valeur notre startup à travers une vidéo
+                                    percutante. Du tournage au montage, tout était parfait. Nous avons
+                                    déjà prévu de refaire appel à lui pour nos prochains projets.
+                                </p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar"><span>BT</span></div>
+                                <div class="author-info">
+                                    <strong>Bretagne Tech</strong>
+                                    <span>Entreprise - 2025</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Témoignage 10 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-accent"></div>
+                        <div class="testimonial-body">
+                            <div class="testimonial-stars" aria-label="5 étoiles">
+                                <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                            </div>
+                            <div class="testimonial-content">
+                                <p class="testimonial-text">
+                                    Quelle émotion en découvrant notre film ! Adrien a un talent rare
+                                    pour capturer les instants volés, les petits moments de complicité
+                                    qui rendent cette journée si unique. Un vrai artiste.
+                                </p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar"><span>L&N</span></div>
+                                <div class="author-info">
+                                    <strong>Laura & Nicolas</strong>
+                                    <span>Mariage - Juillet 2025</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Témoignage 11 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-accent"></div>
+                        <div class="testimonial-body">
+                            <div class="testimonial-stars" aria-label="5 étoiles">
+                                <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                            </div>
+                            <div class="testimonial-content">
+                                <p class="testimonial-text is-long">
+                                    Adrien suit notre club depuis deux saisons maintenant. Ses aftermovies de matchs sont devenus incontournables pour nos supporters. Toujours ponctuel, créatif et à l'écoute de nos besoins. Il sait capturer l'énergie du stade comme personne. Les vidéos qu'il produit ont boosté notre visibilité sur les réseaux sociaux de manière impressionnante.
+                                </p>
+                                <button class="testimonial-toggle" aria-expanded="false">Lire la suite</button>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar"><span>FC</span></div>
+                                <div class="author-info">
+                                    <strong>FC Armor</strong>
+                                    <span>Sport - Saison 2024-2025</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Témoignage 12 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-accent"></div>
+                        <div class="testimonial-body">
+                            <div class="testimonial-stars" aria-label="5 étoiles">
+                                <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                            </div>
+                            <div class="testimonial-content">
+                                <p class="testimonial-text">
+                                    Pour nos 25 ans de mariage, Adrien a créé un film rétrospectif
+                                    avec les témoignages de nos proches. C'est le plus beau cadeau
+                                    que nous ayons pu nous offrir. Une émotion incroyable.
+                                </p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar"><span>I&M</span></div>
+                                <div class="author-info">
+                                    <strong>Isabelle & Marc</strong>
+                                    <span>Anniversaire - 2025</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="testimonials-arrow testimonials-arrow--next" id="testimonials-next" aria-label="Page suivante">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="testimonials-dots" id="testimonials-dots"></div>
+        </div>
+    </section>
+
+    <!-- ==================== SECTION CTA ==================== -->
+    <section class="section cta-section">
+        <div class="cta-background">
+            <img src="/assets/images/workflow.svg" alt="">
+            <div class="cta-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="cta-content text-center reveal-up">
+                <h2>Prêt à donner vie à votre projet ?</h2>
+                <p>Contactez-moi pour discuter de votre vision et créer ensemble quelque chose d'unique.</p>
+                <div class="glow-wrapper" id="glow-wrapper">
+                    <canvas class="glow-canvas" id="glow-canvas"></canvas>
+                    <span class="glow-dot" id="glow-dot"></span>
+                    <button class="btn btn-lg cta-btn-white" id="cta-reservation">
+                        Réserver une date
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="/assets/images/logo.png" alt="ALH Productions" class="footer-logo">
+                    <p>Vidéaste professionnel passionné par l'art de raconter des histoires à travers l'image.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/adrien.productions/" target="_blank" class="social-link" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="https://www.youtube.com/@adrienlhdx" target="_blank" class="social-link" aria-label="YouTube">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61566746434525" target="_blank" class="social-link" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="/">Accueil</a></li>
+                        <li><a href="/mariages">Mariages</a></li>
+                        <li><a href="/entreprises">Entreprises</a></li>
+                        <li><a href="/sport">Sport</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <a href="https://mail.google.com/mail/?view=cm&to=montage.adrienlhdx@gmail.com" target="_blank">montage.adrienlhdx@gmail.com</a>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Bretagne, France
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 ALH Productions. Tous droits réservés.</p>
+                <p>Créé avec passion par Adrien</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="/js/script.js"></script>
+</body>
+</html>
