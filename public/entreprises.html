@@ -12,25 +12,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="/assets/images/favicon.jpg">
+    <link rel="icon" type="image/jpeg" href="assets/images/favicon.jpg">
 </head>
 <body>
     <!-- ==================== HEADER ==================== -->
     <header class="header" id="header">
         <div class="header-container">
-            <a href="/" class="logo">
-                <img src="/assets/images/logo.png" alt="ALH Productions Logo">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.png" alt="ALH Productions Logo">
             </a>
 
             <nav class="nav" id="nav">
                 <ul class="nav-list">
-                    <li><a href="/" class="nav-link">Accueil</a></li>
-                    <li><a href="/mariages" class="nav-link">Mariages</a></li>
-                    <li><a href="/entreprises" class="nav-link active">Entreprises</a></li>
-                    <li><a href="/sport" class="nav-link">Sport</a></li>
+                    <li><a href="index.html" class="nav-link">Accueil</a></li>
+                    <li><a href="mariages.html" class="nav-link">Mariages</a></li>
+                    <li><a href="entreprises.html" class="nav-link active">Entreprises</a></li>
+                    <li><a href="sport.html" class="nav-link">Sport</a></li>
                 </ul>
             </nav>
 
@@ -64,7 +64,7 @@
 
             <form class="reservation-form" id="reservation-form" action="https://formsubmit.co/montage.adrienlhdx@gmail.com" method="POST">
                 <!-- Champs cachés FormSubmit -->
-                <input type="hidden" name="_next" value="http://localhost:3000/entreprises?success=true">
+                <input type="hidden" name="_next" value="entreprises.html?success=true">
                 <input type="hidden" name="_subject" value="Nouvelle demande de réservation Entreprise - ALH Productions">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_template" value="table">
@@ -119,7 +119,7 @@
     <!-- ==================== PAGE HEADER ==================== -->
     <section class="page-header">
         <video class="page-header-video" id="header-video" autoplay muted loop playsinline>
-            <source src="/assets/videos/entreprises-header-new.mp4" type="video/mp4">
+            <source src="assets/videos/entreprises-header-new.mp4" type="video/mp4">
         </video>
         <div class="page-header-overlay"></div>
         <div class="page-header-content fade-in">
@@ -237,7 +237,7 @@
         <div class="container">
             <div class="description-grid">
                 <div class="description-image reveal-left">
-                    <img src="/assets/images/soiree-events.jpg" alt="ALH Productions - Soirée Events" style="width: 100%; border-radius: 8px;">
+                    <img src="assets/images/soiree-events.jpg" alt="ALH Productions - Soirée Events" style="width: 100%; border-radius: 8px;">
                 </div>
 
                 <div class="description-content reveal-right">
@@ -293,7 +293,7 @@
     <!-- ==================== CTA ==================== -->
     <section class="section cta-section">
         <div class="cta-background">
-            <img src="/assets/images/workflow.svg" alt="">
+            <img src="assets/images/workflow.svg" alt="">
             <div class="cta-overlay"></div>
         </div>
         <div class="container">
@@ -316,7 +316,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <img src="/assets/images/logo.png" alt="ALH Productions" class="footer-logo">
+                    <img src="assets/images/logo.png" alt="ALH Productions" class="footer-logo">
                     <p>Vidéaste professionnel passionné par l'art de raconter des histoires à travers l'image.</p>
                     <div class="social-links">
                         <a href="https://www.instagram.com/adrien.productions/" target="_blank" class="social-link" aria-label="Instagram">
@@ -343,10 +343,10 @@
                 <div class="footer-links">
                     <h4>Navigation</h4>
                     <ul>
-                        <li><a href="/">Accueil</a></li>
-                        <li><a href="/mariages">Mariages</a></li>
-                        <li><a href="/entreprises">Entreprises</a></li>
-                        <li><a href="/sport">Sport</a></li>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="mariages.html">Mariages</a></li>
+                        <li><a href="entreprises.html">Entreprises</a></li>
+                        <li><a href="sport.html">Sport</a></li>
                     </ul>
                 </div>
 
@@ -379,7 +379,7 @@
     </footer>
 
     <!-- JavaScript -->
-    <script src="/js/script.js"></script>
+    <script src="js/script.js"></script>
     <script>
         const video = document.getElementById('header-video');
         if (video) {
