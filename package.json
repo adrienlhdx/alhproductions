@@ -7,10 +7,17 @@
     "start": "node server.js",
     "dev": "node server.js"
   },
-  "keywords": ["videaste", "production", "mariage", "corporate", "sport"],
+  "keywords": [
+    "videaste",
+    "production",
+    "mariage",
+    "corporate",
+    "sport"
+  ],
   "author": "Adrien - ALH Productions",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "sharp": "^0.34.5"
   }
 }
