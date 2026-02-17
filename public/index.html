@@ -186,6 +186,7 @@
 
     <!-- ==================== SECTION À PROPOS ==================== -->
     <section class="section about" id="about">
+        <img src="assets/images/bretagne%20pour%20site.png" alt="Zone d'intervention vidéaste Bretagne" class="about-bretagne-map">
         <div class="container">
             <div class="about-grid">
                 <div class="about-image reveal-left">
@@ -707,6 +708,42 @@
             </div>
         </div>
     </footer>
+
+    <!-- Hover Bretagne map sur pixels opaques -->
+    <script>
+    (function() {
+        const img = document.querySelector('.about-bretagne-map');
+        if (!img) return;
+
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        function init() {
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            ctx.drawImage(img, 0, 0);
+        }
+
+        if (img.complete) init();
+        else img.addEventListener('load', init);
+
+        img.addEventListener('mousemove', function(e) {
+            const rect = img.getBoundingClientRect();
+            const x = Math.round((e.clientX - rect.left) / rect.width * canvas.width);
+            const y = Math.round((e.clientY - rect.top) / rect.height * canvas.height);
+            const pixel = ctx.getImageData(x, y, 1, 1).data;
+            if (pixel[3] > 20) {
+                img.classList.add('is-hovered');
+            } else {
+                img.classList.remove('is-hovered');
+            }
+        });
+
+        img.addEventListener('mouseleave', function() {
+            img.classList.remove('is-hovered');
+        });
+    })();
+    </script>
 
     <!-- JavaScript -->
     <script src="js/script.js"></script>

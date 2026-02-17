@@ -602,6 +602,33 @@ button {
 /* ==================== SECTION À PROPOS ==================== */
 .about {
     background: var(--color-off-white);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-bretagne-map {
+    position: absolute;
+    right: -150px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 850px;
+    height: auto;
+    opacity: 0.18;
+    z-index: 0;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    cursor: default;
+    mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+}
+
+.about-bretagne-map.is-hovered {
+    transform: translateY(-50%) scale(1.15);
+    opacity: 0.45;
+}
+
+.about .container {
+    position: relative;
+    z-index: 1;
 }
 
 .about-grid {
@@ -656,6 +683,8 @@ button {
 .about-content {
     padding-left: 20px;
 }
+
+
 
 .about-text {
     color: var(--color-dark-gray);
@@ -2049,7 +2078,23 @@ button {
 
 
 /* ==================== RESPONSIVE ==================== */
+@media (max-width: 1920px) {
+    .about .container {
+        transform: scale(0.85);
+        transform-origin: center center;
+    }
+
+    .about-bretagne-map {
+        width: 700px;
+        right: -120px;
+    }
+}
+
 @media (max-width: 1024px) {
+    .about .container {
+        transform: none;
+    }
+
     .about-grid {
         grid-template-columns: 1fr;
         gap: 50px;
@@ -2058,6 +2103,10 @@ button {
     .about-image {
         max-width: 400px;
         margin: 0 auto;
+    }
+
+    .about-bretagne-map {
+        display: none;
     }
 
     .about-content {
