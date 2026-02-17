@@ -156,8 +156,14 @@
             <!-- 2 vidéos portrait côte à côte en dessous -->
             <div class="video-shorts-row reveal-up">
                 <div class="video-card video-card-short">
-                    <div class="video-embed video-embed-vertical">
-                        <iframe src="https://www.youtube.com/embed/CTMYcxwqGW8" title="Nathan, gérant de Transakauto Bégard" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="video-embed video-embed-vertical custom-thumbnail" data-video="https://www.youtube.com/embed/9dTiRcUBdvs?autoplay=1">
+                        <img src="assets/images/nathan%20transakauto%20minia%201.jpg" alt="Nathan, gérant de Transakauto Bégard" class="custom-thumb-img">
+                        <div class="custom-thumb-play">
+                            <svg width="68" height="68" viewBox="0 0 68 68">
+                                <circle cx="34" cy="34" r="33" fill="rgba(0,0,0,0.6)" stroke="white" stroke-width="2"/>
+                                <polygon points="27,20 27,48 50,34" fill="white"/>
+                            </svg>
+                        </div>
                     </div>
                     <div class="video-info">
                         <h3>Nathan, gérant de Transakauto Bégard</h3>
@@ -166,8 +172,14 @@
                 </div>
 
                 <div class="video-card video-card-short">
-                    <div class="video-embed video-embed-vertical">
-                        <iframe src="https://www.youtube.com/embed/32gE0B5ukZw" title="Diana soirée event" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="video-embed video-embed-vertical custom-thumbnail" data-video="https://www.youtube.com/embed/32gE0B5ukZw?autoplay=1">
+                        <img src="assets/images/diana%20minia%201.jpg" alt="Diana, décoratrice de mariage" class="custom-thumb-img">
+                        <div class="custom-thumb-play">
+                            <svg width="68" height="68" viewBox="0 0 68 68">
+                                <circle cx="34" cy="34" r="33" fill="rgba(0,0,0,0.6)" stroke="white" stroke-width="2"/>
+                                <polygon points="27,20 27,48 50,34" fill="white"/>
+                            </svg>
+                        </div>
                     </div>
                     <div class="video-info">
                         <h3>Diana, décoratrice de mariage</h3>
@@ -190,9 +202,7 @@
                 <!-- Film institutionnel -->
                 <div class="prestation-card reveal-up">
                     <div class="prestation-image">
-                        <div class="image-placeholder dark">
-                            <span>Film institutionnel</span>
-                        </div>
+                        <img src="assets/images/cuisine 1.webp" alt="Film institutionnel">
                         <div class="prestation-overlay"></div>
                     </div>
                     <div class="prestation-content">
@@ -204,7 +214,7 @@
                 <!-- Événements -->
                 <div class="prestation-card reveal-up" style="animation-delay: 0.1s;">
                     <div class="prestation-image">
-                        <img src="assets/images/cuisine 1.webp" alt="Événements">
+                        <img src="assets/images/salon%201000%20soupapes.jpg" alt="Événements">
                         <div class="prestation-overlay"></div>
                     </div>
                     <div class="prestation-content">
@@ -216,9 +226,7 @@
                 <!-- Communication -->
                 <div class="prestation-card reveal-up" style="animation-delay: 0.2s;">
                     <div class="prestation-image">
-                        <div class="image-placeholder dark">
-                            <span>Communication</span>
-                        </div>
+                        <img src="assets/images/communication%20entreprises.jpg" alt="Communication entreprise">
                         <div class="prestation-overlay"></div>
                     </div>
                     <div class="prestation-content">
@@ -376,9 +384,43 @@
         </div>
     </footer>
 
+    <style>
+        .custom-thumbnail {
+            position: relative;
+            cursor: pointer;
+        }
+        .custom-thumb-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .custom-thumb-play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
+        .custom-thumbnail:hover .custom-thumb-play {
+            transform: translate(-50%, -50%) scale(1.15);
+        }
+    </style>
+
     <!-- JavaScript -->
     <script src="js/script.js"></script>
     <script>
+        document.querySelectorAll('.custom-thumbnail').forEach(function(el) {
+            el.addEventListener('click', function() {
+                var src = el.getAttribute('data-video');
+                el.innerHTML = '<iframe src="' + src + '" title="Vidéo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                el.classList.remove('custom-thumbnail');
+            });
+        });
+
         const video = document.getElementById('header-video');
         if (video) {
             video.addEventListener('timeupdate', () => {
