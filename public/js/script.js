@@ -567,6 +567,38 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // ==================== VIDÉO HEADER - PAUSE HORS VIEWPORT + VISIBILITÉ ONGLET ====================
+    const headerVideo = document.getElementById('header-video');
+
+    if (headerVideo) {
+        // Pause/play selon la visibilité dans le viewport
+        const videoObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting && !document.hidden) {
+                    headerVideo.play().catch(function() {});
+                } else {
+                    headerVideo.pause();
+                }
+            });
+        }, { threshold: 0.1 });
+
+        videoObserver.observe(headerVideo);
+
+        // Pause quand l'onglet est caché (économie GPU même si visible dans le viewport)
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                headerVideo.pause();
+            } else {
+                // Relancer uniquement si la vidéo est dans le viewport
+                var rect = headerVideo.getBoundingClientRect();
+                var inViewport = rect.bottom > 0 && rect.top < window.innerHeight;
+                if (inViewport) {
+                    headerVideo.play().catch(function() {});
+                }
+            }
+        });
+    }
+
     // ==================== LAZY LOADING VIDEOS (préparation) ====================
     const videoPlaceholders = document.querySelectorAll('.video-placeholder');
 
