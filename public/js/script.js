@@ -774,24 +774,32 @@ document.addEventListener('DOMContentLoaded', function() {
         const countDuration = 10000;
         const pauseAfterCount = 2000;
 
-        function formatNumber(n) {
-            return '+' + Math.floor(n).toLocaleString('fr-FR');
+        // Met à jour les slots individuels (chaque chiffre dans son propre span fixe)
+        function updateSlots(v, n) {
+            var maxLen = parseInt(v.dataset.maxLen);
+            var curStr = Math.floor(n).toLocaleString('fr-FR');
+            // Padding gauche avec espaces insécables jusqu'à maxLen
+            while (curStr.length < maxLen) curStr = '\u00A0' + curStr;
+            var numSlots = v.querySelectorAll('.digit-num');
+            for (var i = 0; i < numSlots.length; i++) {
+                numSlots[i].textContent = curStr[i];
+            }
         }
 
         function animateCount(counter, onDone) {
             var target = parseInt(counter.getAttribute('data-target'));
             var steps = Math.floor(countDuration / (1000 / 60));
             var step = 0;
-            counter.textContent = formatNumber(0);
+            updateSlots(counter, 0);
 
             function tick() {
                 step++;
                 var eased = (1 - Math.cos(Math.PI * step / steps)) / 2;
-                counter.textContent = formatNumber(eased * target);
+                updateSlots(counter, eased * target);
                 if (step < steps) {
                     requestAnimationFrame(tick);
                 } else {
-                    counter.textContent = formatNumber(target);
+                    updateSlots(counter, target);
                     if (onDone) onDone();
                 }
             }
@@ -821,7 +829,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             setTimeout(function() {
                                 item.classList.remove('visible');
                                 item.classList.remove('fade-out');
-                                value.textContent = formatNumber(0);
+                                updateSlots(value, 0);
                             }, 1300);
                         }, 400);
                     }, pauseAfterCount);
@@ -829,7 +837,73 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 400);
         }
 
-        showCounter(0);
+        // Crée les slots de chiffres individuels après chargement des polices
+        function initCounterSlots() {
+            // Facteur de resserrement des chiffres (< 1 = plus serré)
+            var digitFactor = 0.88;
+
+            counterValues.forEach(function(v) {
+                var target = parseInt(v.getAttribute('data-target'));
+                var maxNumStr = target.toLocaleString('fr-FR'); // ex: "50 000"
+
+                // Récupère la font-size en px pour convertir en em (responsif)
+                var fontSize = parseFloat(window.getComputedStyle(v).fontSize);
+
+                // Mesure la largeur d'un chiffre, convertie en em
+                v.textContent = '0';
+                var digitEm = (v.getBoundingClientRect().width * digitFactor / fontSize);
+
+                // Mesure la largeur réelle du séparateur de milliers, convertie en em
+                var sepIdx = maxNumStr.search(/\D/);
+                var sepEm;
+                if (sepIdx >= 0) {
+                    v.textContent = maxNumStr[sepIdx];
+                    sepEm = v.getBoundingClientRect().width / fontSize;
+                    if (sepEm <= 0) sepEm = digitEm * 0.3;
+                } else {
+                    sepEm = digitEm * 0.3;
+                }
+
+                // Mesure la largeur du "+", convertie en em
+                v.textContent = '+';
+                var plusEm = (v.getBoundingClientRect().width * digitFactor / fontSize);
+
+                // Construire les slots
+                v.textContent = '';
+                v.style.display = 'inline-flex';
+                v.style.alignItems = 'center';
+                v.dataset.maxLen = maxNumStr.length;
+
+                // Slot "+" (toujours fixe, jamais modifié)
+                var plusSlot = document.createElement('span');
+                plusSlot.className = 'digit-slot';
+                plusSlot.style.width = plusEm + 'em';
+                plusSlot.textContent = '+';
+                v.appendChild(plusSlot);
+
+                // Un slot par caractère : largeur adaptée selon chiffre ou séparateur
+                for (var i = 0; i < maxNumStr.length; i++) {
+                    var slot = document.createElement('span');
+                    slot.className = 'digit-slot digit-num';
+                    var isDigit = /\d/.test(maxNumStr[i]);
+                    slot.style.width = (isDigit ? digitEm : sepEm) + 'em';
+                    slot.textContent = '\u00A0';
+                    v.appendChild(slot);
+                }
+            });
+        }
+
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(function() {
+                initCounterSlots();
+                showCounter(0);
+            });
+        } else {
+            setTimeout(function() {
+                initCounterSlots();
+                showCounter(0);
+            }, 500);
+        }
 
         // Scroll-based opacity: hide on videos, show on other sections
         function updateCounterOpacity() {

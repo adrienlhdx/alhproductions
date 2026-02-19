@@ -239,6 +239,7 @@
 
     <!-- ==================== SECTION PRESTATIONS ==================== -->
     <section class="section prestations" id="prestations">
+        <img src="assets/images/camera.png" alt="Caméra vidéaste" class="prestations-camera">
         <div class="container">
             <div class="section-header text-center reveal-up">
                 <span class="section-label">Services</span>
@@ -714,6 +715,47 @@
         </div>
     </footer>
 
+    <!-- Hover caméra sur pixels opaques -->
+    <script>
+    (function() {
+        const img = document.querySelector('.prestations-camera');
+        if (!img) return;
+
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d', { willReadFrequently: true });
+
+        function drawCanvas() {
+            if (img.naturalWidth > 0) {
+                canvas.width  = img.naturalWidth;
+                canvas.height = img.naturalHeight;
+                ctx.drawImage(img, 0, 0);
+            }
+        }
+
+        if (img.complete && img.naturalWidth > 0) drawCanvas();
+        img.addEventListener('load', drawCanvas);
+        window.addEventListener('load', drawCanvas);
+
+        document.addEventListener('mousemove', function(e) {
+            const r = img.getBoundingClientRect();
+            // Hors bounding box → retirer
+            if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) {
+                img.classList.remove('is-hovered');
+                return;
+            }
+            // Canvas pas encore prêt → on attend, rien de plus
+            if (canvas.width === 0) {
+                drawCanvas();
+                return;
+            }
+            const x = Math.round((e.clientX - r.left) / r.width  * canvas.width);
+            const y = Math.round((e.clientY - r.top)  / r.height * canvas.height);
+            const pngAlpha = ctx.getImageData(x, y, 1, 1).data[3];
+            img.classList.toggle('is-hovered', pngAlpha > 128);
+        });
+    })();
+    </script>
+
     <!-- Hover Bretagne map sur pixels opaques -->
     <script>
     (function() {
@@ -721,7 +763,7 @@
         if (!img) return;
 
         const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
         function init() {
             canvas.width = img.naturalWidth;

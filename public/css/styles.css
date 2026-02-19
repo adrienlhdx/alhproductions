@@ -731,6 +731,39 @@ button {
 /* ==================== SECTION PRESTATIONS ==================== */
 .prestations {
     background: var(--color-white);
+    position: relative;
+    overflow: hidden;
+}
+
+.prestations-camera {
+    position: absolute;
+    left: -480px;
+    top: 30px;
+    width: 1400px;
+    height: auto;
+    opacity: 0.12;
+    z-index: 0;
+    pointer-events: none;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+}
+
+@media (max-width: 1920px) {
+    .prestations-camera {
+        width: 1050px;
+        left: -360px;
+    }
+}
+
+.prestations-camera.is-hovered {
+    transform: scale(1.3) rotate(-8deg);
+    opacity: 0.9;
+}
+
+.prestations .container {
+    position: relative;
+    z-index: 1;
 }
 
 .prestations-grid {
@@ -1564,9 +1597,10 @@ button {
 /* ==================== COMPTEUR FLOTTANT ==================== */
 .floating-counter {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     z-index: 1;
     opacity: 0;
     pointer-events: none;
@@ -1604,12 +1638,12 @@ button {
 .counter-item {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 47%;
     transform: translate(-50%, -50%) scale(1);
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 3vw;
+    gap: 0.1vw;
     opacity: 0;
     transition: opacity 2.5s ease-in;
 }
@@ -1635,9 +1669,16 @@ button {
     font-size: 18vw;
     font-weight: 800;
     color: var(--color-dark);
-    letter-spacing: -0.4vw;
-    white-space: nowrap;
     line-height: 1;
+    display: inline-flex;
+    align-items: center;
+}
+
+.digit-slot {
+    display: inline-block;
+    text-align: center;
+    flex-shrink: 0;
+    letter-spacing: 0;
 }
 
 .counter-label {
@@ -1650,10 +1691,10 @@ button {
 }
 
 @keyframes counterShake {
-    0%, 100% { transform: translate(-50%, -50%) scale(1) translateY(0); }
-    25% { transform: translate(-50%, -50%) scale(1) translateY(-8px); }
-    50% { transform: translate(-50%, -50%) scale(1) translateY(4px); }
-    75% { transform: translate(-50%, -50%) scale(1) translateY(-3px); }
+    0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+    25% { transform: translate(-50%, -50%) translateY(-8px); }
+    50% { transform: translate(-50%, -50%) translateY(4px); }
+    75% { transform: translate(-50%, -50%) translateY(-3px); }
 }
 
 @media (max-width: 768px) {
@@ -2106,6 +2147,10 @@ button {
     }
 
     .about-bretagne-map {
+        display: none;
+    }
+
+    .prestations-camera {
         display: none;
     }
 
