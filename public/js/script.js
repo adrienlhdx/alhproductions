@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (tGrid && tPrev && tNext && tDotsContainer) {
         var tCards = tGrid.querySelectorAll('.testimonial-card');
-        var CARDS_PER_PAGE = 4;
+        var CARDS_PER_PAGE = 2;
         var tCurrentPage = 0;
         var tTotalPages = Math.ceil(tCards.length / CARDS_PER_PAGE);
         var tIsAnimating = false;
@@ -292,54 +292,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         var focusedClone = null;
         var focusedOriginal = null;
-        var hoverTimer = null;
         var isAnimatingFocus = false;
 
-        // Event delegation with mouseover/mouseout (they bubble, unlike mouseenter/mouseleave)
-        var hoveredCard = null;
-
-        tGrid.addEventListener('mouseover', function(e) {
-            var card = e.target.closest('.testimonial-card');
-            if (card === hoveredCard) return; // still on same card, ignore child transitions
-
-            // Clear any pending timer from previous card
-            if (hoverTimer) {
-                clearTimeout(hoverTimer);
-                hoverTimer = null;
-            }
-
-            hoveredCard = card;
-            if (!card || focusedClone || isAnimatingFocus) return;
-
-            hoverTimer = setTimeout(function() {
-                if (hoveredCard === card) {
-                    openTestimonialFocus(card);
-                }
-            }, 1000);
-        });
-
-        tGrid.addEventListener('mouseout', function(e) {
-            var card = e.target.closest('.testimonial-card');
-            var toCard = e.relatedTarget ? e.relatedTarget.closest('.testimonial-card') : null;
-
-            // Only cancel if actually leaving the card, not moving between its children
-            if (card && card !== toCard) {
-                hoveredCard = toCard;
-                if (hoverTimer) {
-                    clearTimeout(hoverTimer);
-                    hoverTimer = null;
-                }
-            }
-        });
-
-        // Click to open immediately
+        // Click to open
         tGrid.addEventListener('click', function(e) {
             var card = e.target.closest('.testimonial-card');
             if (!card || focusedClone || isAnimatingFocus) return;
-            if (hoverTimer) {
-                clearTimeout(hoverTimer);
-                hoverTimer = null;
-            }
             openTestimonialFocus(card);
         });
 
@@ -356,7 +314,6 @@ document.addEventListener('DOMContentLoaded', function() {
             document.removeEventListener('keydown', escTestimonialFocus);
             focusedClone = null;
             focusedOriginal = null;
-            hoveredCard = null;
             isAnimatingFocus = false;
         }
 
@@ -412,7 +369,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // Safety timeout if transitionend never fires
             var arrivalSafety = setTimeout(function() {
                 isAnimatingFocus = false;
-                clone.addEventListener('mouseleave', closeTestimonialFocus);
             }, 800);
 
             clone.addEventListener('transitionend', function onArrived(e) {
@@ -420,9 +376,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 clone.removeEventListener('transitionend', onArrived);
                 clearTimeout(arrivalSafety);
                 isAnimatingFocus = false;
-                clone.addEventListener('mouseleave', closeTestimonialFocus);
             });
 
+            clone.addEventListener('click', closeTestimonialFocus);
             testimonialOverlay.addEventListener('click', closeTestimonialFocus);
             document.addEventListener('keydown', escTestimonialFocus);
         }
@@ -463,7 +419,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 resetFocusState();
             });
 
-            clone.removeEventListener('mouseleave', closeTestimonialFocus);
+            clone.removeEventListener('click', closeTestimonialFocus);
             testimonialOverlay.removeEventListener('click', closeTestimonialFocus);
             document.removeEventListener('keydown', escTestimonialFocus);
         }

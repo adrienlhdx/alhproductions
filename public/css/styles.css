@@ -71,6 +71,21 @@ ul {
     list-style: none;
 }
 
+p {
+    text-align: justify;
+}
+
+.text-center p,
+.hero-content p,
+.section-header p,
+.cta-content p,
+.contact-intro p,
+.footer-about p,
+.placeholder-content p,
+.discipline-card p {
+    text-align: center;
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -928,7 +943,6 @@ button {
 
 .testimonial-text {
     font-size: 1rem;
-    font-style: italic;
     color: var(--color-dark-gray);
     line-height: 1.8;
     margin: 0;
@@ -2039,7 +2053,7 @@ button {
 /* ==================== DISCIPLINES (page sport) ==================== */
 .disciplines-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     margin-top: 50px;
 }
