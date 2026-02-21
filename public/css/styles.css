@@ -885,6 +885,7 @@ button {
     background: var(--color-off-white);
     overflow: hidden;
     position: relative;
+    padding-bottom: 50px;
 }
 
 .testimonials-clap {
@@ -1209,7 +1210,16 @@ button {
     z-index: 3;
     overflow: hidden;
     padding: 0;
-    background: #0f0f1e;
+    background: #ebebeb;
+}
+
+.cta-text-block {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 10;
 }
 
 .cta-background {
@@ -1222,26 +1232,9 @@ button {
     height: auto;
 }
 
-.cta-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
-    z-index: 1;
-}
 
-.cta-section > .container {
-    position: absolute !important;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 10;
-    display: flex !important;
-    align-items: flex-start;
-    justify-content: center;
+.cta-overlay {
+    display: none;
 }
 
 .cta-content {
@@ -1253,12 +1246,12 @@ button {
     font-family: var(--font-primary);
     font-size: clamp(1.4rem, 2vw, 2.5rem);
     margin-bottom: 1vw;
-    margin-top: 6vw;
-    color: var(--color-white);
+    margin-top: 0;
+    color: var(--color-dark);
 }
 
 .cta-content p {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--color-dark-gray);
     font-size: clamp(0.85rem, 1.2vw, 1.1rem);
     margin-bottom: 0;
     padding: 0 20px;
@@ -1267,7 +1260,8 @@ button {
 .glow-wrapper {
     position: relative;
     display: inline-block;
-    margin-top: 5vw;
+    margin-top: 45px;
+    margin-bottom: -8px;
 }
 
 .glow-canvas {
@@ -1283,17 +1277,17 @@ button {
     position: absolute;
     width: 10px;
     height: 10px;
-    background: #fff;
+    background: var(--color-gold);
     border-radius: 50%;
-    box-shadow: 0 0 8px 3px rgba(255, 255, 255, 0.9), 0 0 20px 6px rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 8px 3px rgba(184, 149, 79, 0.6), 0 0 20px 6px rgba(184, 149, 79, 0.25);
     z-index: 3;
     pointer-events: none;
     transform: translate(-50%, -50%);
 }
 
 .cta-btn-white {
-    background: #fff;
-    color: var(--color-dark);
+    background: var(--color-dark);
+    color: var(--color-white);
     margin-top: 0;
     padding: clamp(14px, 2.5vw, 28px) clamp(35px, 6vw, 80px);
     font-size: clamp(0.9rem, 1.5vw, 1.35rem);
@@ -1303,9 +1297,9 @@ button {
 }
 
 .cta-btn-white:hover {
-    background: #f0f0f0;
+    background: var(--color-black);
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 /* ==================== FOOTER ==================== */
@@ -2158,6 +2152,7 @@ button {
 }
 
 
+
 /* ==================== RESPONSIVE ==================== */
 @media (max-width: 1920px) {
     .about .container {
@@ -2400,44 +2395,58 @@ button {
     }
 }
 
-/* CTA responsive : on masque les textes et on centre le bouton */
+/* CTA responsive */
 @media (max-width: 1024px) {
+    /* Empêche .section{padding:80px 0} d'ajouter de l'espace gris */
+    .cta-section {
+        padding: 0;
+    }
+
     .cta-content h2,
     .cta-content p {
         display: none;
     }
 
-    .cta-section {
-        min-height: 250px;
+    .cta-text-block {
+        top: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .glow-wrapper {
+        margin-top: 0;
+        transform: scale(1.5);
     }
 
     .cta-background {
-        position: absolute !important;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        overflow: visible;
+        height: auto;
+        position: static;
+    }
+
+    /* Rogner le vide du haut du SVG (130px réservés pour le texte desktop).
+       Hauteur = zone contenu seule = 360/1400 × 100vw = 25.7vw.
+       object-position: bottom décale l'image vers le bas et supprime
+       exactement le vide du haut. */
+    .cta-background {
+        overflow: hidden;
     }
 
     .cta-background img {
         width: 100%;
-        height: 100%;
+        height: 25.7vw;
         object-fit: cover;
-        transform: scale(1.05);
-    }
-
-    .cta-section > .container {
-        align-items: center !important;
-        min-height: 250px;
-    }
-
-    .glow-wrapper {
-        margin-top: 0 !important;
+        object-position: center bottom;
+        display: block;
     }
 
     .cta-btn-white {
-        padding: 18px 50px !important;
         font-size: 1rem !important;
+        padding: 14px 42px !important;
+        border-radius: 6px;
     }
 }
 
