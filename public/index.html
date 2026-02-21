@@ -312,6 +312,7 @@
 
     <!-- ==================== SECTION TÉMOIGNAGES ==================== -->
     <section class="section testimonials" id="testimonials">
+        <img src="assets/images/clap%20de%20tournage.png" alt="Clap de tournage cinéma" class="testimonials-clap">
         <div class="container">
             <div class="section-header text-center reveal-up">
                 <span class="section-label">Témoignages</span>
@@ -542,6 +543,42 @@
             const y = Math.round((e.clientY - r.top)  / r.height * canvas.height);
             const pngAlpha = ctx.getImageData(x, y, 1, 1).data[3];
             img.classList.toggle('is-hovered', pngAlpha > 128);
+        });
+    })();
+    </script>
+
+    <!-- Hover clap de tournage sur pixels opaques -->
+    <script>
+    (function() {
+        const img = document.querySelector('.testimonials-clap');
+        if (!img) return;
+
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d', { willReadFrequently: true });
+
+        function init() {
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            ctx.drawImage(img, 0, 0);
+        }
+
+        if (img.complete) init();
+        else img.addEventListener('load', init);
+
+        img.addEventListener('mousemove', function(e) {
+            const rect = img.getBoundingClientRect();
+            const x = Math.round((e.clientX - rect.left) / rect.width * canvas.width);
+            const y = Math.round((e.clientY - rect.top) / rect.height * canvas.height);
+            const pixel = ctx.getImageData(x, y, 1, 1).data;
+            if (pixel[3] > 20) {
+                img.classList.add('is-hovered');
+            } else {
+                img.classList.remove('is-hovered');
+            }
+        });
+
+        img.addEventListener('mouseleave', function() {
+            img.classList.remove('is-hovered');
         });
     })();
     </script>
