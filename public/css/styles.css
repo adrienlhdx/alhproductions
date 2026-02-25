@@ -869,6 +869,7 @@ button {
     color: var(--color-gray);
     font-size: 0.95rem;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .prestation-link {
