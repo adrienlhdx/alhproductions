@@ -1018,4 +1018,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
         requestAnimationFrame(animateGlow);
     }
+
+    // ==================== MODAL CALENDRIER DISPONIBILITÉS ====================
+    const btnDispo = document.getElementById('btn-dispo');
+    const calModal = document.getElementById('cal-modal');
+    const calModalClose = document.getElementById('cal-modal-close');
+    const calModalOverlay = calModal ? calModal.querySelector('.cal-modal-overlay') : null;
+
+    function openCalModal() {
+        if (calModal) {
+            calModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function closeCalModal() {
+        if (calModal) {
+            calModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+
+    if (btnDispo) btnDispo.addEventListener('click', openCalModal);
+    if (calModalClose) calModalClose.addEventListener('click', closeCalModal);
+    if (calModalOverlay) calModalOverlay.addEventListener('click', closeCalModal);
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && calModal && calModal.classList.contains('active')) {
+            closeCalModal();
+        }
+    });
 });

@@ -194,13 +194,13 @@ button {
 }
 
 .header-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    justify-content: space-between;
     height: 100%;
     max-width: var(--container-width);
     margin: 0 auto;
-    padding: 0 var(--container-padding);
+    padding: 0 0 0 var(--container-padding);
 }
 
 .logo img {
@@ -213,9 +213,21 @@ button {
     transform: scale(1.05);
 }
 
+.nav {
+    justify-self: center;
+}
+
 .nav-list {
     display: flex;
     gap: 40px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    transform: translateX(45px);
 }
 
 .nav-link {
@@ -2251,6 +2263,11 @@ button {
         --header-height: 70px;
     }
 
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
     .nav {
         position: fixed;
         top: 0;
@@ -2454,5 +2471,187 @@ button {
     .cta-btn-white {
         padding: 14px 35px !important;
         font-size: 0.9rem !important;
+    }
+}
+
+/* ==================== BOUTON DISPONIBILITÉS ==================== */
+.btn-dispo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 2px solid var(--color-light-gray);
+    color: var(--color-dark-gray);
+    background: transparent;
+    transition: var(--transition-normal);
+    position: relative;
+    flex-shrink: 0;
+}
+
+.btn-dispo:hover {
+    border-color: var(--color-gold);
+    color: var(--color-gold);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(184, 149, 79, 0.2);
+}
+
+.btn-dispo-tooltip {
+    position: absolute;
+    bottom: -34px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-dark);
+    color: var(--color-white);
+    font-size: 0.68rem;
+    font-family: var(--font-primary);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    padding: 4px 10px;
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 10;
+}
+
+.btn-dispo:hover .btn-dispo-tooltip {
+    opacity: 1;
+}
+
+/* ==================== MODAL CALENDRIER ==================== */
+.cal-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.cal-modal.active {
+    display: flex;
+}
+
+.cal-modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+}
+
+.cal-modal-box {
+    position: relative;
+    z-index: 1;
+    background: var(--color-white);
+    border-radius: 12px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: var(--shadow-lg);
+    animation: calModalIn 0.3s ease;
+}
+
+@keyframes calModalIn {
+    from { opacity: 0; transform: scale(0.95) translateY(12px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.cal-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--color-light-gray);
+    background: var(--color-off-white);
+}
+
+.cal-modal-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cal-modal-title svg {
+    color: var(--color-gold);
+    flex-shrink: 0;
+}
+
+.cal-modal-title h3 {
+    font-family: var(--font-primary);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-dark);
+    margin: 0;
+}
+
+.cal-modal-title p {
+    font-size: 0.75rem;
+    color: var(--color-gray);
+    margin: 3px 0 0;
+    text-align: left;
+}
+
+.cal-modal-close {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--color-light-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    line-height: 1;
+    color: var(--color-dark-gray);
+    background: transparent;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    flex-shrink: 0;
+}
+
+.cal-modal-close:hover {
+    background: var(--color-light);
+    color: var(--color-dark);
+    border-color: var(--color-medium-gray);
+}
+
+.cal-modal-body {
+    height: 560px;
+}
+
+.cal-modal-body iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .btn-dispo {
+        width: 36px;
+        height: 36px;
+    }
+
+    .cal-modal-body {
+        height: 420px;
+    }
+
+    .cal-modal-header {
+        padding: 14px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cal-modal {
+        padding: 10px;
+    }
+
+    .cal-modal-body {
+        height: 380px;
     }
 }
