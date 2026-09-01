@@ -535,6 +535,37 @@
         </svg>
     </section>
 
+    <!-- ==================== AVIS MARIAGES.NET ==================== -->
+    <section class="section avis-section">
+        <div class="container">
+            <div class="section-header text-center reveal-up">
+                <span class="section-label">Témoignages</span>
+                <h2 class="section-title">Ce que disent mes mariés</h2>
+            </div>
+            <div class="avis-widget-wrapper reveal-up">
+                <script src="https://cdn1.mariages.net/js/wp-widget.js?symfnw-FR48-1-20260824-002-0_www_m_"></script>
+                <div id="wp-widget-reviews">
+                    <div id="wp-widget-preview">
+                        Lire <a href="https://www.mariages.net/video-mariage/alh-productions--e383277/avis" rel="nofollow">nos avis</a> à &nbsp;
+                        <a href="https://www.mariages.net" rel="nofollow">
+                            <img src="https://cdn1.mariages.net/assets/img/logos/gen_logoHeader.svg" height="20">
+                        </a>
+                    </div>
+                </div>
+                <script>wpShowReviews(383277, "red");</script>
+                <script>
+                    setTimeout(function() {
+                        document.querySelectorAll('#wp-widget-reviews a').forEach(function(a) {
+                            if (a.textContent.toLowerCase().includes('avis')) {
+                                a.textContent = 'Tous mes avis';
+                            }
+                        });
+                    }, 3000);
+                </script>
+            </div>
+        </div>
+    </section>
+
     <!-- ==================== CTA ==================== -->
     <section class="section cta-section">
         <div class="cta-background">

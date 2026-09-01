@@ -1619,6 +1619,16 @@ button {
     color: var(--color-white);
 }
 
+.avis-section {
+    background: var(--color-off-white);
+}
+
+.avis-widget-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
 .coming-soon-placeholder {
     background: linear-gradient(135deg, #e8e8e8 0%, #d5d5d5 100%) !important;
     cursor: default;
